@@ -1,4 +1,4 @@
-#Criar ssh
+#ssh
 apt install openssh-server
 
 #Parar um Serviço
