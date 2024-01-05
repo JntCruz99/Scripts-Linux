@@ -1,0 +1,135 @@
+#Criar ssh
+apt install openssh-server
+
+#Parar um Serviço
+systemctl stop nome_do_serviço
+
+#Criar pasta
+mkdir pasta
+
+#vizualizar logs:
+journalctl
+
+#Remover Diretório
+rmdir nome_do_diretorio
+
+#Criar Arquivo
+touch nome_do_arquivo
+
+#Copiar Arquivo/Diretório
+cp origem destino
+
+#Mover/Renomear Arquivo
+mv origem destino
+
+#Visualizar Conteúdo do Arquivo
+cat nome_do_arquivo
+
+#Editar Arquivo
+nano nome_do_arquivo
+
+#Encontrar Arquivos
+find /caminho -name "nome_do_arquivo"
+
+#Permissões de Arquivos
+chmod permissões nome_do_arquivo
+
+4 (r): Permissão de leitura.
+2 (w): Permissão de gravação.
+1 (x): Permissão de execução.
+
+u+rwx: Adiciona permissões de leitura, gravação e execução para o proprietário.
+g+rx: Adiciona permissões de leitura e execução para o grupo.
+o+r: Adiciona permissão de leitura para outros.
+
+#Adicionar um Usuário
+adduser nome_do_usuario
+
+#Adicionar um Usuário a um Grupo
+usermod -aG nome_do_grupo nome_do_usuario
+
+#Modificar Informações do Usuário
+usermod -c "Nome Completo" nome_do_usuario
+
+#Alterar Senha de um Usuário
+passwd nome_do_usuario
+
+#Remover um Usuário
+deluser nome_do_usuario
+
+#Verificar Informações do Usuário
+id nome_do_usuario
+
+#Verificar Todos os Usuários no Sistema
+cat /etc/passwd
+
+#Verificar Grupos no Sistema
+cat /etc/group
+
+#Listar Partições e Detalhes
+lsblk
+
+#Montar Partições Manualmente
+mount /dev/sdXn /ponto_de_montagem
+
+#Desmontar Partições
+umount /ponto_de_montagem
+
+#lista processo do usuario
+ps
+
+#lista os processos de todos os usuarios
+ps aux
+
+#finalizar processo
+kill idDoProcesso
+
+#finalizar pelo nome
+killall chrome
+
+#ver os usuarios q estão logados 
+w
+
+#ver os usuarios q estão logados com pim
+who -a
+
+#deslogar usuario
+kill pimDoUsuario
+
+#baixar arquivo da web
+wget linkdodownload
+
+#fazendo servidor de arquivos
+	#instalando samba
+	apt install samba -y
+	#criar pasta para compartilhar
+	mkdir publica
+	#adicionando permissoes
+	chmod 777 publica
+	#abrindo arquivo de configuração do samba
+	nano /etc/samba/smb.conf
+	#configurar pasta no arquivo do samba
+	[publica]
+	path = endereço da pasta
+	writable = yes
+	guest ok = yes
+	guest only = yes
+	#resetar serviço do samba
+	systemctl restart smbd
+	#verificar status
+	systemctl status smbd
+	#ativar para executar o samba em segundo plano automaticamente
+	systemctl enable smbd
+
+#deixando servidor com ip fixo
+sudo nano /etc/network/interfaces
+#Adicione ou edite as linhas para configurar o IP fixo
+auto nome_da_interface
+iface nome_da_interface inet static
+    address endereco_IP
+    netmask mascara
+    gateway gateway
+#Reinicie a rede para aplicar as alterações
+sudo systemctl restart networking
+
+
